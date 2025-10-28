@@ -13,7 +13,23 @@ local field = loadstring(game:HttpGet("https://raw.githubusercontent.com/StormSo
 local window = field:NewWindow({
 	WindowName = "Test";
 	WindowImage = "rbxassetid://14187686429";
+	Configuration = {
+		Shadow = false;
+	},
+	OpenButton = {
+		Image = ""
+	},
+	Premium = {
+		Local = {
+			GamepassID = 1234567890
+		}
+	}
 })
+```
+
+**Custom Premium Function**
+```lua
+local ispremium = window:PremiumState()
 ```
 
 **Creating a tab**
