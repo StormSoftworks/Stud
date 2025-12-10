@@ -69,6 +69,16 @@ local checkbox = section1:CreateCheckbox({
 })
 ```
 
+**Creating a -KEYBIND- checkbox (PC ONLY)**
+```lua
+local kbcheckbox = section2:CreateKBCheckBox({
+	CheckboxName = "Keybind",
+	Callback = function(retvalue)
+		print(tostring(retvalue) .. " - keybind checkbox")
+	end,
+})
+```
+
 **Creating a textbox**
 ```lua
 local textbox = section1:CreateTextBox({
