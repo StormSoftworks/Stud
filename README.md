@@ -1,5 +1,6 @@
 # Stud
 An roblox ui library
+https://discord.gg/tmmWWKT8YA
 
 # Documents
 
