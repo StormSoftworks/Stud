@@ -27,6 +27,11 @@ local window = field:NewWindow({
 })
 ```
 
+**Lucide Icons**
+```lua
+local getlucideicons = window:GetLucideIcons() -- returns lucide icons table.
+```
+
 **Custom Premium Function**
 ```lua
 local ispremium = window:PremiumState()
