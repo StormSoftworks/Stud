@@ -12,13 +12,15 @@ local field = loadstring(game:HttpGet("https://raw.githubusercontent.com/StormSo
 **Creating a window**
 ```lua
 local window = field:NewWindow({
-	WindowName = "Test";
-	WindowImage = "rbxassetid://14187686429";
+	WindowName = "Test"; -- sets the window's name
+	WindowImage = "rbxassetid://14187686429"; -- sets the window's icon
 	Configuration = {
 		Shadow = false;
+		WindowSize = nil; -- if nil will use default size / scaled size for device.	
 	},
 	OpenButton = {
-		Image = ""
+		Image = ""; -- self explanatory
+		Size = nil; -- sets the openbutton's size, if nil will use default size / scaled size for device.
 	},
 	Premium = {
 		Local = {
