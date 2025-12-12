@@ -151,3 +151,121 @@ local dropdown1 = section2:CreateDropdown({
 	end,
 })
 ```
+
+# Settings
+```lua
+--- Settings
+-- ====================================================================================================================================================
+local CustomizableImage = Instance.new("ImageLabel", game:GetService("Players").LocalPlayer.PlayerGui:WaitForChild('StudLibrary'):WaitForChild('Main'))
+CustomizableImage.Size = UDim2.new(1,0,1,0)
+CustomizableImage.ZIndex = 1
+CustomizableImage.BackgroundTransparency = 1
+CustomizableImage.ImageTransparency = .94
+CustomizableImage.Image = ""
+
+local SettingsPage = {}
+
+SettingsPage.SettingTab = window:CreateTab({
+	TabName = "Settings";
+	TabImage = "rbxassetid://11293977610";
+})
+
+SettingsPage.SettingSection = SettingsPage.SettingTab:CreateSection({
+	SectionTitle = "UI";
+	SectionDescription = "Offer's an costumizable settings page UI for Stud ui library";
+	SectionImage = "rbxassetid://14187686429";
+})
+
+SettingsPage.ThemeSection = SettingsPage.SettingTab:CreateSection({
+	SectionTitle = "Themes";
+	SectionDescription = "Display's all the theme's you can use for this library.";
+	SectionImage = "rbxassetid://12967676465";
+})
+
+SettingsPage.SettingSection:CreateTextBox({
+	TextboxName = "Background Image";
+	PlaceHolder = "rbxassetid://11293977610"; -- Leave empty if you don't have any, will replace with "Enter any string here."
+	Text = ""; -- Leave empty if you don't have any.
+	Callback = function(str)
+		CustomizableImage.Image = str
+	end,
+})
+
+SettingsPage.SettingSection:CreateTextBox({
+	TextboxName = "BackgroundColor3",
+	PlaceHolder = "255,255,255 / Default", -- Leave empty if you don't have any, will replace with "Enter any string here."
+	Text = "", -- Leave empty if you don't have any.
+	Callback = function(str)
+		-- Split the string by commas and convert to numbers
+		local r, g, b = str:match("(%d+),(%d+),(%d+)")
+		if r and g and b then
+			r, g, b = tonumber(r), tonumber(g), tonumber(b)
+			-- Clamp between 0 and 255, then convert to 0–1 range
+			r, g, b = math.clamp(r, 0, 255) / 255, math.clamp(g, 0, 255) / 255, math.clamp(b, 0, 255) / 255
+			local color = Color3.new(r, g, b)
+
+			-- Apply the color
+			local playerGui = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
+			local mainGui = playerGui:WaitForChild("StudLibrary"):WaitForChild("Main")
+
+			mainGui.GroupColor3 = color
+		else
+			warn("Invalid color format. Use: R,G,B (e.g., 255,255,255)")
+		end
+
+		if str == "Default" then
+			local playerGui = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
+			local mainGui = playerGui:WaitForChild("StudLibrary"):WaitForChild("Main")
+
+			mainGui.GroupColor3 = Color3.fromRGB(255,255,255)
+		end
+	end,
+})
+
+SettingsPage.SettingSection:CreateButton({
+	ButtonName = "Reset UI Size";
+	Callback = function()
+		window["2"].Size = UDim2.new(0.392, 0,0.47, 0)
+	end,
+})
+
+--[[
+SettingsPage.SettingSection:CreateTextBox({
+	TextboxName = "Title Renaming",
+	PlaceHolder = "Stud -- string",
+	Text = "",
+	Callback = function(str)
+		local playerGui = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
+		local mainGui = playerGui:WaitForChild("StudLibrary"):WaitForChild("Main")
+		mainGui.Topbar.TextLabel.Text = str
+	end,
+})
+--]]
+
+SettingsPage.SettingSection:CreateDropdown({
+	DropdownName = "Theme",
+	Default = "Default",
+	Entries = {"Amethyst","Dark","Default", "Crimson"},
+	Callback = function(v)
+		local playerGui = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
+		local mainGui = playerGui:WaitForChild("StudLibrary"):WaitForChild("Main")
+
+		if v == "Amethyst" then
+			mainGui.GroupColor3 = Color3.fromRGB(185, 167, 255)
+		elseif v == "Dark" then
+			mainGui.GroupColor3 = Color3.fromRGB(127, 127, 127)
+		elseif v == "Default" then
+			mainGui.GroupColor3 = Color3.fromRGB(255,255,255)
+		elseif v == "Crimson" then
+			mainGui.GroupColor3 = Color3.fromRGB(255, 149, 149)
+		end
+	end
+})
+
+SettingsPage.ThemeSection:CreateCheckbox({
+	CheckboxName = "Shadow";
+	Callback = function(retval)
+		window:Shadow(retval)
+	end,
+})
+```
