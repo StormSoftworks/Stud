@@ -31,9 +31,9 @@ local window = field:NewWindow({
 })
 ```
 
-**Lucide Icons**
+**Icons**
 ```lua
-local getlucideicons = field:GetIconsTable() -- returns icons table.
+local geticons = field:GetIconsTable() -- returns icons table.
 ```
 
 **Custom Premium Function**
