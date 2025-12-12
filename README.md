@@ -41,6 +41,15 @@ local geticons = field:GetIconsTable() -- returns icons table.
 local ispremium = window:PremiumState()
 ```
 
+**Apply themes**
+```lua
+local applythemes = window:ApplyThemes({
+	GroupColor3 = Color3.fromRGB(255,255,255),
+	GroupTransparency = 0.1,
+	BackgroundImage = nil
+})
+```
+
 **Creating a tab**
 ```lua
 local tab1 = window:CreateTab({
