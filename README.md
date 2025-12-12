@@ -21,6 +21,7 @@ local window = field:NewWindow({
 	OpenButton = {
 		Image = ""; -- self explanatory
 		Size = nil; -- sets the openbutton's size, if nil will use default size / scaled size for device.
+		Draggable = true; 
 	},
 	Premium = {
 		Local = {
