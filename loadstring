@@ -4,16 +4,6 @@ local TS = game:GetService('TweenService')
 local UIS = game:GetService('UserInputService')
 
 local AccountInfo = {
-	["petruliviu"] = {
-		AccountType = "Owner";
-		CommsLinked = true;
-		CommsUser = "not_void.dev";
-	},
-	["robloxem12000"] = {
-		AccountType = "User";
-		CommsLinked = true;
-		CommsUser = "robloxem12000";
-	}
 }
 
 -- lucide full parse by fluent plus
@@ -4226,3 +4216,4 @@ end
 function field:GetIconsTable()
 	return Icons
 end
+
